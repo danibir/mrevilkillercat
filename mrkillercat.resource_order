@@ -1,0 +1,22 @@
+{
+  "FolderOrderSettings":[
+    {"name":"game-assets","order":2,"path":"folders/game-assets.yy",},
+    {"name":"rooms","order":1,"path":"folders/game-assets/rooms.yy",},
+    {"name":"sprites","order":2,"path":"folders/game-assets/sprites.yy",},
+    {"name":"scripts","order":3,"path":"folders/game-assets/scripts.yy",},
+  ],
+  "ResourceOrderSettings":[
+    {"name":"obj_build","order":2,"path":"objects/obj_build/obj_build.yy",},
+    {"name":"obj_button_time","order":6,"path":"objects/obj_button_time/obj_button_time.yy",},
+    {"name":"obj_button_toTest","order":1,"path":"objects/obj_button_toTest/obj_button_toTest.yy",},
+    {"name":"obj_cam","order":3,"path":"objects/obj_cam/obj_cam.yy",},
+    {"name":"obj_entity","order":5,"path":"objects/obj_entity/obj_entity.yy",},
+    {"name":"obj_terrain","order":4,"path":"objects/obj_terrain/obj_terrain.yy",},
+    {"name":"room_preset","order":1,"path":"rooms/room_preset/room_preset.yy",},
+    {"name":"room_test","order":2,"path":"rooms/room_test/room_test.yy",},
+    {"name":"spr_background","order":1,"path":"sprites/spr_background/spr_background.yy",},
+    {"name":"spr_eng","order":3,"path":"sprites/spr_eng/spr_eng.yy",},
+    {"name":"spr_ground","order":2,"path":"sprites/spr_ground/spr_ground.yy",},
+    {"name":"Sprite5","order":4,"path":"sprites/Sprite5/Sprite5.yy",},
+  ],
+}
