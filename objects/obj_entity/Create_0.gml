@@ -1,3 +1,14 @@
+image_alpha = 0.4
+
+sprite = instance_create_layer(x, y, "Instances", obj_sprite)
+hitbox = instance_create_layer(x, y, "Instances", obj_hitbox)
+
+sprite_state = ""
+anim_walkin_max = 7
+anim_walkin = 0
+anim_walkout_max = 7
+anim_walkout = 0
+
 size = 1
 
 xspeed = 0
@@ -17,10 +28,14 @@ isMoving = false
 facing = 1
 frict = 0
 
-function entity_move (topspeed, accel)
+function entity_move (topspeed, accel, turn)
 {
 	isMoving = true
 	xspeed = lerp(0, topspeed, min(xspeed/topspeed + accel * global.time, 1))
+	if turn = true
+	{
+		facing = sign(topspeed)
+	}
 }
 function collide_terrain_order (list)
 {
@@ -56,7 +71,8 @@ function collide_terrain (side)
 			for (var i = 0; i < contact; i++)
 			{
 				var contactTerrain = contact_array[i]
-				y = min(y, contactTerrain.bbox_top - colhitbox_bottom)
+				var ylevel = min(y, contactTerrain.bbox_top - colhitbox_bottom)
+				y = lerp(y, ylevel, 0.6 * global.time)
 				yspeed = 0
 				isGrounded = true
 				frict = contactTerrain.frict
@@ -88,9 +104,9 @@ function collide_terrain (side)
 		
 		case "left":
 		contact = collision_line(
-		x - colhitbox_side + xspeed * 1.2, 
+		x - colhitbox_side + xspeed * 1.2 * global.time, 
 		y - colhitbox_top + vel_down + min(colhitbox_top, slip), 
-		x - colhitbox_side + xspeed * 1.2, 
+		x - colhitbox_side + xspeed * 1.2 * global.time, 
 		y + colhitbox_bottom - vel_down - stepclimb,
 		obj_terrain, true, false)
 		if contact != noone and xspeed <= 0
@@ -103,9 +119,9 @@ function collide_terrain (side)
 		
 		case "right":
 		contact = collision_line(
-		x + colhitbox_side + xspeed * 1.2, 
+		x + colhitbox_side + xspeed * 1.2 * global.time, 
 		y - colhitbox_top + vel_up + min(colhitbox_top, slip), 
-		x + colhitbox_side + xspeed * 1.2, 
+		x + colhitbox_side + xspeed * 1.2 * global.time, 
 		y + colhitbox_bottom - vel_down - stepclimb, 
 		obj_terrain, true, false)
 		if contact != noone and xspeed >= 0

@@ -7,24 +7,6 @@ if !isGrounded
 x += xspeed * global.time
 y -= yspeed * global.time
 
-var myspeed = 15
-var myaccel = 1/10
-isMoving = false
-if keyboard_check(ord("A"))
-{
-	entity_move(-9, 1/10)
-}
-if keyboard_check(ord("D"))
-{
-	entity_move(9, 1/10)
-}
-if keyboard_check(vk_space) and isGrounded = true
-{
-	yspeed = 10
-	if isGrounded
-		y--
-}
-
 var xaxis = ["right", "left"]
 if xspeed < 0
 	xaxis = [xaxis[1], xaxis[0]]
