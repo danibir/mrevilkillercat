@@ -35,5 +35,8 @@
     "path":"sprites/spr_eng/spr_eng.yy",
   },
   "spriteMaskId":null,
+  "tags":[
+    "debugVis",
+  ],
   "visible":true,
 }

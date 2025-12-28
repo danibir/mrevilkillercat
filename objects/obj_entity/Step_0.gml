@@ -1,5 +1,5 @@
 
-slip = lerp(4, 16, ((abs(xspeed) + abs(yspeed)) / 50))
+slip = lerp(4, 8, ((abs(xspeed) + abs(yspeed)) / 50))
 
 if !isGrounded
 	yspeed -= global.gravity * global.time
@@ -11,7 +11,7 @@ var xaxis = ["right", "left"]
 if xspeed < 0
 	xaxis = [xaxis[1], xaxis[0]]
 var yaxis = ["up", "down"]
-if yspeed < 0
+if yspeed <= 0
 	yaxis = [yaxis[1], yaxis[0]]
 
 	

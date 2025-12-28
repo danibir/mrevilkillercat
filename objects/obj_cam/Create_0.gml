@@ -1,10 +1,14 @@
-zoom = 1
+zoom = 0.8
 default_view_width = 1600
 default_view_height = 900
 
 tug = false
 tugx = x
 tugy = y
+
+follow = obj_entity_plr
+offset_x = 0
+offset_y = -48
 
 cam = camera_create()
 camera_set_view_pos(cam, x - default_view_width / 2, y - default_view_height / 2)

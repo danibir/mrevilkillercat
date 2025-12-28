@@ -22,3 +22,29 @@ if global.time != 0 and timestopped = true
 	}
 	timestopped_array = []
 }
+if global.debug = true
+{
+	var assets = tag_get_assets("debugVis")
+	for (var i = 0; i < array_length(assets); i++)
+	{
+		var asset = assets[i]
+		asset = asset_get_index(asset)
+		with asset
+		{
+			visible = true
+		}
+	}
+}
+else
+{
+	var assets = tag_get_assets("debugVis")
+	for (var i = 0; i < array_length(assets); i++)
+	{
+		var asset = assets[i]
+		asset = asset_get_index(asset)
+		with asset
+		{
+			visible = false
+		}
+	}
+}

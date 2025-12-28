@@ -40,6 +40,7 @@
   "spriteMaskId":null,
   "tags":[
     "disabledOnTimestop",
+    "debugVis",
   ],
   "visible":true,
 }
