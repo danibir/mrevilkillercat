@@ -62,7 +62,7 @@ switch sprite_state
 
 if keyboard_check(vk_shift)
 {
-	var _speed = 60
+	var _speed = 30
 	xspeed = 0
 	yspeed = 0
 	if keyboard_check(ord("W"))

@@ -1,5 +1,5 @@
 
-slip = lerp(4, 8, ((abs(xspeed) + abs(yspeed)) / 50))
+slip = lerp(8, 12, ((abs(xspeed) + abs(yspeed)) / 50))
 
 if !isGrounded
 	yspeed -= global.gravity * global.time

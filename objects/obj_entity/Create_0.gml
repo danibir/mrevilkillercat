@@ -32,7 +32,7 @@ frict = 0
 
 function entity_move (topspeed, accel, turn, force)
 {
-	if force = true or abs(topspeed) >= abs(xspeed)
+	if force = true or abs(topspeed) >= xspeed * sign(topspeed)
 	{
 		isMoving = true
 		xspeed = lerp(0, topspeed, min(xspeed/topspeed + accel * global.time, 1))
@@ -136,9 +136,9 @@ function collide_terrain (side)
 				x += xspeed
 				var xlevel = max(x, contactTerrain.bbox_right + colhitbox_side)
 				x = lerp(x, xlevel, 0.6 * global.time)
-				if xspeed > 10
-					y = xlevel
-				xspeed /= 2
+				if xspeed < -10
+					x = xlevel
+				xspeed /= -2
 			}
 		}
 		break
@@ -160,12 +160,14 @@ function collide_terrain (side)
 			for (var i = 0; i < contact; i++)
 			{
 				var contactTerrain = contact_array[i]
+				show_debug_message(x)
 				x += xspeed
 				var xlevel = min(x, contactTerrain.bbox_left - colhitbox_side)
 				x = lerp(x, xlevel, 0.6 * global.time)
-				if xspeed < -10
+				show_debug_message(x)
+				if xspeed > 10
 					x = xlevel
-				xspeed /= 2
+				xspeed /= -2
 			}
 		}
 		break
@@ -176,6 +178,7 @@ function collide_terrain (side)
 
 function collide_get_size ()
 {
+	var distancing = 18
 	var xcenter = 0
 	var ycenter = (colhitbox_top - colhitbox_bottom) / 2
 	var vel_down = min(min(yspeed, 0) * -1, ycenter)
@@ -199,13 +202,13 @@ function collide_get_size ()
 		-colhitbox_side - vel_left, 
 		-colhitbox_top + vel_up + min(colhitbox_top, slip), 
 		-colhitbox_side - vel_left, 
-		colhitbox_bottom - vel_down - stepclimb,
+		colhitbox_bottom - vel_down - max(min(colhitbox_top, slip), stepclimb)
 	]
 	var map_right = [
 		colhitbox_side + vel_right, 
 		-colhitbox_top + vel_up + min(colhitbox_top, slip), 
 		colhitbox_side + vel_right, 
-		colhitbox_bottom - vel_down - stepclimb,
+		colhitbox_bottom - vel_down - max(min(colhitbox_top, slip), stepclimb)
 	]
 	
 	var map = ds_map_create()

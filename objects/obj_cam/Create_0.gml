@@ -1,4 +1,4 @@
-zoom = 0.8
+zoom = 1.5
 default_view_width = 1600
 default_view_height = 900
 
